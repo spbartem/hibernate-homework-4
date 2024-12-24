@@ -7,15 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import ru.productstar.dao.entity.Contact;
 
-import java.util.List;
-import java.util.Optional;
-
 public interface ContactRepository extends JpaRepository<Contact, Long> {
-
-    Contact save(Contact contact);
-    Optional<Contact> findById(long contactId);
-    void deleteById(long contactId);
-    List<Contact> findAll();
 
     @Transactional
     @Modifying

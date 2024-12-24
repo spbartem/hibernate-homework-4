@@ -41,7 +41,7 @@ public class ContactRepositoryTests {
         var contactId = contactRepository.save(contact).getId();
         contact.setId(contactId);
         var contactInDb = contactRepository.findById(contactId)
-                .orElseThrow(() -> new IllegalArgumentException());;
+                .orElseThrow(IllegalArgumentException::new);
 
 
         assertThat(contactInDb).isEqualTo(contact);
@@ -50,7 +50,7 @@ public class ContactRepositoryTests {
     @Test
     void getContact() {
         var contact = contactRepository.findById(IVAN.getId())
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(IllegalArgumentException::new);
 
         assertThat(contact).isEqualTo(IVAN);
     }
@@ -71,7 +71,7 @@ public class ContactRepositoryTests {
         contactRepository.updatePhone(contactId, newPhone);
 
         var updatedContact = contactRepository.findById(contactId)
-                .orElseThrow(() -> new IllegalArgumentException());;
+                .orElseThrow(IllegalArgumentException::new);
         assertThat(updatedContact.getPhone()).isEqualTo(newPhone);
     }
 
@@ -84,7 +84,7 @@ public class ContactRepositoryTests {
         contactRepository.updateEmail(contactId, newEmail);
 
         var updatedContact = contactRepository.findById(contactId)
-                .orElseThrow(() -> new IllegalArgumentException());;
+                .orElseThrow(IllegalArgumentException::new);
         assertThat(updatedContact.getEmail()).isEqualTo(newEmail);
     }
 
